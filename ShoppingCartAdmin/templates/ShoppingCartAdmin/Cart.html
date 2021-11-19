@@ -1,0 +1,28 @@
+
+
+<h1>Products in your cart</h1>
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Price</th>
+    <th>Quantity</th>
+</tr>
+
+{% for item, count in list %}
+    {% if count > 0 %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.get_image}}</td>
+            <td>{{item.price}}</td>
+            <td>{{count}}</td>
+            <form method="POST">
+                {% csrf_token %}
+                <td>{{form}}</td>
+                <td><input type="submit" value="submit" name="{{item.id}}"></td>
+            </form>
+        </tr>
+    {% endif %}
+{% endfor %}
+
+

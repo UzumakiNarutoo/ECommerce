@@ -1,0 +1,16 @@
+
+
+<h1>Registration</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{register_form}}
+    <input type="submit" value="register" name="register">
+</form>
+
+<h1>Add address</Address></h1>
+<form method="POST">
+    {% csrf_token %}
+    {{address_form}}
+    <input type="submit" value="Add address" name="address">
+</form>
+

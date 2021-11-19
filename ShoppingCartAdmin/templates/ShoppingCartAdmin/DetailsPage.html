@@ -1,0 +1,18 @@
+
+
+<h1>Product name : {{product.name}}</h1>
+<h1>Product SKU : {{product.SKU}}</h1>
+<h1>Product description : {{product.description}}</h1>
+<h1>Product price : {{product.price}}</h1>
+<h1>Product quantity : {{product.stock}}</h1>
+
+<h1>Products Images</h1>
+
+{% for item in imge_list %}
+    {% if item.product.id == product.id %}
+        <img src="{{item.image}}" alt={{item.id}} width="150" height="150"> 
+        
+    {% endif %}
+
+{% endfor %}
+

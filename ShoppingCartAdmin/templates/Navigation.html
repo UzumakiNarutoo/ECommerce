@@ -1,0 +1,21 @@
+<h1>Welcome at the shop.</h1>
+
+{% if login == 'False' %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="login" name="login">
+        <input type="submit" value="register" name="register">
+    </form>
+
+{% else %}
+    <h1>The number of items in your cart is {{cart_items}}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="cart" name="cart">
+        <input type="submit" value="logout" name="logout">
+    </form>
+
+{% endif %}
+
+{% block content %}
+{% endblock content %}

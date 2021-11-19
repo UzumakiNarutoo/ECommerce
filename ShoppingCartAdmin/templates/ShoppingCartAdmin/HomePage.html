@@ -1,0 +1,43 @@
+{% extends 'Navigation.html' %}
+
+{% block content %}
+
+<h1>Products</h1>
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Image</th>
+    <th>Details</th>
+    {% if login != 'False' %}
+        <th>Add to cart</th>
+    {% endif %}
+</tr>
+
+
+{% for item in products %}
+    <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td><img src="{{item.get_image.url}}" alt={{item.name}} width="150" height="150"></td>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <td><input type="submit" value="Details" name="Details + {{item.id}}"></td>
+        </form>
+
+        {% if login != 'False' %}
+            <form method="POST">
+                {% csrf_token %}
+                <td><br><input type="submit" value="Add item" name="Add + {{item.id}}"></td>
+            </form>
+        {% endif %}
+    </tr>
+
+{% empty %}
+    <tr><td>No products yet.</td></tr>
+
+{% endfor %}
+</table>
+
+{% endblock content %}
